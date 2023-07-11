@@ -18,6 +18,13 @@ pipeline {
                 sh './build.sh'
             }
         }
+     stage('Test') {
+       steps {
+
+          sh 'npm test'
+
+       }
+     }
 
         stage('Push') {
             steps {
