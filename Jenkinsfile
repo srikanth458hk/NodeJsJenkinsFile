@@ -1,23 +1,33 @@
 pipeline {
   agent any
 
-  stages {
-    stage('Build') {
-      steps {
-        sh 'chmod +x build.sh'
-        sh './build.sh'
-      }
-    }
-    stage('Push') {
-      steps {
-        
-        sh 'chmod +x push.sh'
-        sh './push.sh'
 
-      }
+     stage('Fetch Scripts') {
+            steps {
+                checkout([$class: 'GitSCM',
+                          branches: [[name: '*/main']],
+                          userRemoteConfigs: [[url:'https://github.com/srikanth458hk/nodejsrepo.git']]])
+
+                sh 'chmod +x build.sh push.sh'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh './build.sh'
+            }
+        }
+
+        stage('Push') {
+            steps {
+                sh './push.sh'
+            }
+        }
     }
+}
+
+
+  
     
     
    
-  }
-}
