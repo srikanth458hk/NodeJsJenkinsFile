@@ -9,7 +9,7 @@ pipeline {
                           branches: [[name: '*/main']],
                           userRemoteConfigs: [[url:'https://github.com/srikanth458hk/nodejsrepo.git']]])
 
-                sh 'chmod +x build.sh push.sh'
+                sh 'chmod +x build.sh push.sh deploy.sh'
             }
         }
 
@@ -24,6 +24,10 @@ pipeline {
                 sh './push.sh'
             }
         }
+     stage('Deploy')
+     {
+     steps {
+       sh './deploy.sh'
     }
 }
 
