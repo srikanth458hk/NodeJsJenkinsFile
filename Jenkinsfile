@@ -1,7 +1,8 @@
 pipeline {
   agent any
 
-
+   stages {
+     
      stage('Fetch Scripts') {
             steps {
                 checkout([$class: 'GitSCM',
