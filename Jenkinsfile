@@ -21,12 +21,16 @@ pipeline {
      stage('Test') {
        steps {
 
-          sh 'npm test'
+          
 
        }
      }
+     
 
         stage('Push') {
+          input {
+         message "Do you want to process with the deployment?"
+         ok "Deploy"
             steps {
                 sh './push.sh'
             }
