@@ -18,15 +18,7 @@ pipeline {
                 sh './build.sh'
             }
         }
-     stage('Test') {
-       steps {
-
-          
-
-       }
-     }
      
-
         stage('Push') {
           
             steps {
