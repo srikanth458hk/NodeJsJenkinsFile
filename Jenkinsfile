@@ -28,20 +28,21 @@ pipeline {
      
 
         stage('Push') {
-          input {
-         message "Do you want to process with the deployment?"
-         ok "Deploy"
+          
             steps {
                 sh './push.sh'
             }
         }
      stage('Deploy')
      {
+       input {
+         message "Do you want to process with the deployment?"
+         ok "Deploy"
      steps {
        sh './deploy.sh'
     }
 }
-
+     }
 
    }
 }
