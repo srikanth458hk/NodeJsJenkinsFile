@@ -28,13 +28,14 @@ pipeline {
      stage('Deploy')
      {
        input {
-         message "Do you want to process with the deployment?"
+         message 'Do you want to process with the deployment?'
          ok "Deploy"
+       }
      steps {
        sh './deploy.sh'
     }
 }
-     }
+     
 
    }
 }
