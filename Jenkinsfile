@@ -12,6 +12,16 @@ pipeline {
                 sh 'chmod +x build.sh push.sh deploy.sh'
             }
         }
+       stage('Trigger Infrastructure Pipeline') {
+            steps {
+                script {
+                    def infraJobName = 'infrajob' // Name of your infrastructure pipeline job
+                    
+                    // Trigger the infrastructure pipeline
+                    build job: "${infraJobName}", wait: false
+                }
+            }
+        }
 
         stage('Build') {
             steps {
