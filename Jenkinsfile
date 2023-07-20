@@ -18,6 +18,10 @@ pipeline {
         stage('Build') {
             steps {
                 sh './build.sh'
+              script {
+                    def pullRequestId = sh(returnStdout: true, script: 'echo $CHANGE_ID').trim()
+                    storePullRequestInfo(pullRequestId)
+                }
             }
         }
      
