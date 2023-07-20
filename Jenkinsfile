@@ -1,4 +1,4 @@
-@Library('PullRequestInfo') _
+@Library('PullRequestInfo@1.0') _
 pipeline {
   agent any
 
