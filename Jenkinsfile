@@ -12,27 +12,7 @@ pipeline {
                 sh 'chmod +x build.sh push.sh deploy.sh'
             }
         }
-       stage('Trigger Infrastructure Pipeline') {
-            steps {
-                script {
-                    def infraJobName = 'infrajob' // Name of your infrastructure pipeline job
-                    def jenkinsUrl = 'http://jenkins-server:8080' // Replace with your Jenkins server URL
-                    
-                    // Trigger the infrastructure pipeline
-                    def response = httpRequest(
-                        url: "${jenkinsUrl}/job/${infraJobName}/build",
-                        method: 'POST',
-                        authentication: 'usernamePassword',
-                        username: 'srikanth', // Replace with your Jenkins username
-                        password: '11458@Hk'  // Replace with your Jenkins password or API token
-                    )
-                    
-                    if (response.status != 201) {
-                        error("Failed to trigger the infrastructure pipeline. Response status: ${response.status}")
-                    }
-                }
-            }
-        }
+      
 
         stage('Build') {
             steps {
