@@ -21,7 +21,7 @@ pipeline {
               script {
                     sh './build.sh'
                     def pullRequestId = sh(returnStdout: true, script: 'echo $CHANGE_ID').trim()
-                    storePullRequestInfo(pullRequestId)
+                    pullRequest(pullRequestId)
                 }
             }
         }
