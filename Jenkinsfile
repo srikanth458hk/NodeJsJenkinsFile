@@ -52,7 +52,7 @@ pipeline {
             def actualpullRequestId = pullRequestId // Replace with the actual pull request ID.
 
             // Use the function from the shared library to store the pull request ID.
-            actualpullRequest(actualpullRequestId)
+            pullRequest(actualpullRequestId)
         }
     }
 }
