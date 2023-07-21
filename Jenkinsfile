@@ -45,6 +45,16 @@ pipeline {
      
 
    }
+
+  post {
+        success {
+            // Assuming you have access to the pull request ID in your pipeline.
+            def pullRequestId = 'pullRequestId' // Replace with the actual pull request ID.
+
+            // Use the function from the shared library to store the pull request ID.
+            pullRequest(pullRequestId)
+        }
+    }
 }
     
     
