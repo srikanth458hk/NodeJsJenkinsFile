@@ -1,4 +1,4 @@
-@Library('actualPullRequest') _
+@Library('actualpullRequest') _
 pipeline {
   agent any
 
