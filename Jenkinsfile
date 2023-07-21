@@ -1,4 +1,4 @@
-@Library('pullRequest') _
+@Library('actualPullRequest') _
 pipeline {
   agent any
 
@@ -20,8 +20,8 @@ pipeline {
                
               script {
                     sh './build.sh'
-                    def pullRequestId = sh(returnStdout: true, script: 'echo $CHANGE_ID').trim()
-                    pullRequest(pullRequestId)
+                    def actualpullRequestId = sh(returnStdout: true, script: 'echo $CHANGE_ID').trim()
+                    actualpullRequest(pullRequestId)
                 }
             }
         }
@@ -49,10 +49,10 @@ pipeline {
   post {
         success {
             // Assuming you have access to the pull request ID in your pipeline.
-            def pullRequestId = pullRequestId // Replace with the actual pull request ID.
+            def actualpullRequestId = pullRequestId // Replace with the actual pull request ID.
 
             // Use the function from the shared library to store the pull request ID.
-            pullRequest(pullRequestId)
+            actualpullRequest(pullRequestId)
         }
     }
 }
